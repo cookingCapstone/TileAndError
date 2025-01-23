@@ -5,28 +5,22 @@
 //  Created by Abdullah Khan on 1/9/25.
 //
 
+
+//
+//  TileAndErrorApp.swift
+//  Entry point of the app.
+//
+//  This file initializes the app and sets up the main window group to display the `GameView`.
+//  It ensures the app launches correctly and shows the core gameplay screen.
+//
 import SwiftUI
-import SwiftData
 
 @main
 struct TileAndErrorApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView()
+                .ignoresSafeArea()
         }
-        .modelContainer(sharedModelContainer)
     }
 }
